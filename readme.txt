@@ -1,5 +1,5 @@
 Hi
 
-url: https://drop-n-go.onrender.com/
+url: https://somity-hisab.onrender.com/
 username: admin
 password: admin12345
