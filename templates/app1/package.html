@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block title %}{% trans "Package Details" %}{% endblock %}
+{% block style_links %}
+<link rel="stylesheet" href="{% static 'app1/customer_details.css' %}">
+<style>
+
+</style>
+{% endblock %}
+
+{% block content %}
+<h2>{% trans "Package Details" %}</h2>
+<div class="div1">
+    
+    <table>
+        <tr>
+            <th>{% trans "Client ID" %}</th>
+            <td>: {% trans "THIS PAGE IS NOT DYNAMIC" %}</td>
+        </tr>
+        <tr>
+            <th>{% trans "Status" %}</th>
+            <td>: {% trans "Active" %}</td>
+        </tr>
+        <tr>
+            <th>{% trans "Start Date" %}</th>
+            <td>: {% trans "01-jan-2023" %}</td>
+        </tr>
+        <tr>
+            <th>{% trans "Expired Date" %}</th>
+            <td>: {% trans "31-Dec-2030" %}</td>
+        </tr>
+        <tr>
+            <th>{% trans "Billing Cycle" %}</th>
+            <td>: {% trans "Monthly" %}</td>
+        </tr>
+        <tr>
+            <th>{% trans "Package Name" %}</th>
+            <td>: {% trans "1 - 300 Members" %}</td>
+        </tr>
+        <tr>
+            <th>{% trans "Limit Customer" %}</th>
+            <td>: {% trans "300" %}</td>
+        </tr>
+    </table>
+</div>
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}
