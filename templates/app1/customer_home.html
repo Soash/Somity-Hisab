@@ -16,9 +16,21 @@
 <body>
     <div class="nav">
         <div class="nav1">            
-            <div>
+            {% comment %} <div>
                 <a href="{% url 'customer_home' %}"><img src="{% static 'img/logo.jpg' %}"></a>
-            </div>
+            </div> {% endcomment %}
+            {% if logo %}
+            {% if user.is_staff %}
+                <a href="{% url 'home' %}"><img src="{{ logo.image.url }}" alt="Site Logo"></a>
+            {% else %}
+                <a href="{% url 'customer_home' %}"><img src="{{ logo.image.url }}" alt="Site Logo"></a>
+            {% endif %}
+            {% else %}
+            <!-- Fallback logo -->
+            <a href="{% url 'home' %}"><img src="{% static 'img/logo.jpg' %}" alt="Default Logo"></a>
+            {% endif %}
+
+
             <div style="display: flex; gap:50px;">
                 <button type="button" class="menu"><i class="fa-solid fa-bars"></i></button>
             </div>

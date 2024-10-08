@@ -13,7 +13,7 @@ from report.models import UserLog
 from .forms import BankDepositForm, BankWithdrawForm, CustomerForm, LoanCollectionForm, DPSForm, LoanACForm, DPSDepositForm, DPSWithdrawForm
 from .forms import LoanSpecialForm, LoanSpecialCollectionForm, GeneralDepositForm, GeneralWithdrawForm, SavingsDepositForm
 from .forms import FDRForm, LoanFineForm, Loan_CC_Form, Loan_CC_CollectionForm, LoanSpecialForm, SavingsWithdrawForm
-from .models import ActiveBranch, BankTransaction, Customer, DPSDeposit, DPSInstallmentSchedule, DPSTransactionHistory, FDRTransactionHistory, GeneralDeposit, LoanAC, LoanCollection, DPS, Loan_Special, SavingsDeposit, ShareAC, ShareACTransactionHistory
+from .models import ActiveBranch, BankTransaction, Customer, DPSDeposit, DPSInstallmentSchedule, DPSTransactionHistory, FDRTransactionHistory, GeneralDeposit, LoanAC, LoanCollection, DPS, Loan_Special, Package, SavingsDeposit, ShareAC, ShareACTransactionHistory
 from .models import SavingsAC, SavingsTransactionHistory, GeneralTransactionHistory, GeneralAC, FDR
 from .models import InstallmentSchedule, LoanFine, Loan_CC, Loan_CC_Collection, Loan_CC_InstallmentSchedule, Loan_Special
 from primary_setup.models import Branch, DPSScheme, FDRScheme, Holiday, SMSSetting, Somity
@@ -162,9 +162,12 @@ def home(request):
     return render(request, 'app1/home.html', {'date': date})
 
 # @user_passes_test(group_check)
-@login_required
 def package(request):
-    return render(request, 'app1/package.html')
+    package = Package.objects.first()
+    if not package:
+        return render(request, 'app1/package.html', {'error': 'No packages available'})
+    
+    return render(request, 'app1/package.html', {'package': package})
 
 
 ###################################################################

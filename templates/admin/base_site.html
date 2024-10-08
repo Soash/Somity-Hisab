@@ -41,8 +41,18 @@
 <div class="nav">
     <div class="nav1">            
         <div>
-            <a href="{% url 'home' %}"><img src="{% static 'img/logo.jpg' %}"></a>
+            {% if logo %}
+                {% if user.is_staff %}
+                    <a href="{% url 'home' %}"><img src="{{ logo.image.url }}" alt="Site Logo"></a>
+                {% else %}
+                    <a href="{% url 'customer_home' %}"><img src="{{ logo.image.url }}" alt="Site Logo"></a>
+                {% endif %}
+            {% else %}
+                <!-- Fallback logo -->
+                <a href="{% url 'home' %}"><img src="{% static 'img/logo.jpg' %}" alt="Default Logo"></a>
+            {% endif %}
         </div>
+        
         <div style="display: flex; gap:50px;">
             <div>
 
@@ -300,7 +310,16 @@
                 
                 {% if user|has_permission:'primary_setup.view_smssetting' %}
                 <a href="{{ request.scheme }}://{{ request.get_host }}/admin/primary_setup/smssetting/" class="nav-link">{% trans "SMS Setting" %}</a>
-                {% endif %} 
+                {% endif %}
+                
+                {% if user|has_permission:'primary_setup.view_smssetting' %}
+                <a href="{{ request.scheme }}://{{ request.get_host }}/admin/app1/package/" class="nav-link">{% trans "Package Setting" %}</a>
+                {% endif %}
+                
+                
+                {% if user|has_permission:'primary_setup.view_smssetting' %}
+                <a href="{{ request.scheme }}://{{ request.get_host }}/admin/app1/logo/" class="nav-link">{% trans "Logo Setting" %}</a>
+                {% endif %}
             </div>                    
         </div>
         <div class="accordion-item">

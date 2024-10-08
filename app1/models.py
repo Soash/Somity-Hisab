@@ -1036,3 +1036,25 @@ class BankTransaction(models.Model):
 
 
 
+
+
+
+class Package(models.Model):
+    client_id = models.CharField(max_length=255, default="1234", blank=True, null=True)
+    status = models.CharField(max_length=50, default="Active", blank=True, null=True)
+    start_date = models.DateField(blank=True, null=True)
+    expired_date = models.DateField(blank=True, null=True)
+    billing_cycle = models.CharField(max_length=50, default="Monthly", blank=True, null=True)
+    package_name = models.CharField(max_length=100, blank=True, null=True)
+    limit_customer = models.CharField(max_length=100, default="100", blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.package_name} ({self.limit_customer} Members)"
+
+
+class Logo(models.Model):
+    image = models.ImageField(upload_to='logos/')
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Logo {self.id}"

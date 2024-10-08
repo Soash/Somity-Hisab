@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Customer, ActiveBranch, DPSDeposit, LoanAC, InstallmentSchedule, LoanCollection, DPS, DPSInstallmentSchedule
+from .models import Customer, ActiveBranch, DPSDeposit, LoanAC, InstallmentSchedule, LoanCollection, DPS, DPSInstallmentSchedule, Logo, Package
 from .models import GeneralAC, GeneralWithdraw, GeneralDeposit, FDR, FDRTransactionHistory, SavingsAC, ShareAC
 from django.contrib import admin
 from .models import ProfitHistory
@@ -106,3 +106,13 @@ admin.site.register(ActiveBranch, ActiveBranchAdmin)
 # admin.site.register(FDRTransactionHistory, FDRTransactionHistoryAdmin)
 # admin.site.register(ProfitHistory, ProfitHistoryAdmin)
 
+
+@admin.register(Package)
+class PackageAdmin(admin.ModelAdmin):
+    list_display = ('client_id', 'status', 'start_date', 'expired_date', 'billing_cycle', 'package_name', 'limit_customer')
+    search_fields = ('client_id', 'package_name')
+    list_filter = ('status', 'billing_cycle')
+    
+@admin.register(Logo)
+class LogoAdmin(admin.ModelAdmin):
+    list_display = ('id', 'uploaded_at')
