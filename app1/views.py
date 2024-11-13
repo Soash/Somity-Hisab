@@ -111,7 +111,7 @@ def signin(request):
         password = request.POST['password']
         user = authenticate(request, username=username, password=password)
         if user is not None:
-            print('ok')
+            # print('ok')
             login(request, user)
             
             UserLog.objects.create(processed_by=request.user, logs_action='Login', description='User logged in',)
@@ -229,12 +229,12 @@ def customer_login(request):
         else:
             messages.error(request, 'Invalid credentials or not a customer.')
 
-    print('ok')
+    # print('ok')
     return render(request, 'app1/customer_login.html')
 
 @login_required
 def customer_signout(request):
-    print('ok')
+    # print('ok')
     logout(request)
     return redirect('customer_login')
 

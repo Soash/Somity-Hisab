@@ -118,8 +118,17 @@
 }
 
 .accordion-button:hover {
-    background-color: #ffffff;
-    color: #333;
+    background-color: #ffffff !important;
+    color: #333 !important;
+}
+
+.accordion-button .developer-link {
+    text-decoration: none !important;
+    color: inherit !important; /* Inherit color from parent button */
+}
+
+.accordion-button .developer-link:hover {
+    color: #333 !important; /* Change color on hover */
 }
 
 .accordion-button i:first-child {
@@ -168,8 +177,6 @@
     color: #333;
     font-weight: bold;
 }
-
-
 
 
 

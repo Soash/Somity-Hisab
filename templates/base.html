@@ -9,6 +9,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="soash">
+    <meta name="author" content="Soash Sadat">
+    <!-- Developed by Soash Sadat -->
+    <!-- https://soash.github.io/ -->
     <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
 
     <title>{% block title %}Django App{% endblock %}</title>
@@ -322,7 +325,15 @@
                         <a href="{% url 'sms_report' %}" class="nav-link">{% trans "SMS Report" %}</a>
                     </div>
                 </div>
-
+                <div class="accordion-item">
+                    <button class="accordion-button">
+                        <div>
+                            <a href="https://soash.github.io/" target="_blank" class="developer-link">
+                                <i class="fa-solid fa-code"></i>{% trans "Developer Info" %}
+                            </a>
+                        </div>
+                    </button>
+                </div>                
             </div>
         </div>
         
