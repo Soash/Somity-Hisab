@@ -37,13 +37,13 @@
         </div>
 
         <div class="nav2">
-            <div>
+            {% comment %} <div>
                 {% if request.LANGUAGE_CODE == 'bn' %}
                     <button onclick="setLanguage('en')" class="lang">English <i class="fa-solid fa-language"></i></button>
                 {% else %}
                     <button onclick="setLanguage('bn')" class="lang">বাংলা <i class="fa-solid fa-language"></i></button>
                 {% endif %}                
-            </div>
+            </div> {% endcomment %}
             <div class="admin-menu">
                 <div id="admin-btn">
                     <span>{{request.user}}</span>
