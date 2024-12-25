@@ -240,6 +240,11 @@ class GeneralTransactionHistory(models.Model):
 
     def __str__(self):
         return f"{self.get_transaction_type_display()} - {self.Amount} on {self.created_at}"
+    
+    def save(self, *args, **kwargs):
+        if not self.VoucherID:
+            self.VoucherID = ''.join(random.choices(string.ascii_lowercase + string.digits, k=15))
+        super().save(*args, **kwargs)
 
 
 

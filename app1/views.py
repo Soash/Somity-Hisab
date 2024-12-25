@@ -66,14 +66,14 @@ def send_sms(**kwargs):
     if balance:
         msg = msg.replace('[balance]', str(balance))
 
-    print(msg)
+    # print(msg)
     data = {
         'token': token,
         'to': number,
         'message': msg,
     }
     response = requests.post(url=sms_url, data=data)
-    print(response.text)
+    # print(response.text)
 
     SMSReport.objects.create(
         sms_type=title,
@@ -472,10 +472,13 @@ def general_deposit(request, id):
                 balance=general_ac.balance,
                 account_number=general_ac.customer.account_no,
             )
+            messages.success(request, "Done")
             return redirect('general_list')
+        
     else:
         form = GeneralDepositForm()
-
+        messages.success(request, "load")
+        
     return render(request, 'app1/general/general_deposit.html', {'form': form, 'data': general_ac})
 
 @login_required
